@@ -4,7 +4,7 @@
 #include "imageIO.h"
 #include "crypto.h"
 
-// Code: ...
+// Code: 43664815
 // Remplacez les "..." par le code à 8 chiffres trouvé dans l'une des images fournies
 // Ne modifiez rien d'autre sur ces trois lignes de commentaires.
 
