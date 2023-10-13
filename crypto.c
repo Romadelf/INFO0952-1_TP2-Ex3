@@ -22,12 +22,12 @@ Image* mapImage(int nbImg, Image **images, Pixel (*f)(int nb, Pixel*),
     for (size_t i = 0; i < cols; i++)
         for (size_t j = 0; j < rows; j++) {
 
-            Pixel *p = malloc(n * sizeof(Image));
+            Pixel *p = malloc(n * sizeof(Pixel));
             for (int k = 0; k < n; k++)
                 p[k] = getImagePixel(images[k], j, i);
 
             Pixel result = f(n, p);
-            setImagePixel(img, j, i, p);
+            setImagePixel(img, j, i, result);
         }
 
     return img;
