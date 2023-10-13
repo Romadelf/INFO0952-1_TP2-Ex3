@@ -4,6 +4,12 @@
 #include "crypto.h"
 #include "imageIO.h"
 
+// encryption :
+// ./crypto images/airplane.bmp images/pepper.bmp images/ici.bmp
+//
+// decryption :
+// ./crypto images/ici.bmp images/ici2.bmp
+
 int main(int argc, char const *argv[]) {
     if (argc != 4 && argc != 3) {
         fprintf(stderr, "Usage:\n");
