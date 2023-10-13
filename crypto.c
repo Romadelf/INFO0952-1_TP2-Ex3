@@ -66,9 +66,9 @@ void encrypt(Image *img1, Image *img2) {
             Pixel p1 = getImagePixel(img1, j, i);
             Pixel p2 = getImagePixel(img2, j, i);
 
-            p1.r -= p1.r % 8 + p2.r / 32;
-            p1.g -= p1.g % 8 + p2.g / 32;
-            p1.b -= p1.b % 8 + p2.b / 32;
+            p1.r += -p1.r % 8 + p2.r / 32;
+            p1.g += -p1.g % 8 + p2.g / 32;
+            p1.b += -p1.b % 8 + p2.b / 32;
 
             setImagePixel(img1, j, i, p1);
         }
