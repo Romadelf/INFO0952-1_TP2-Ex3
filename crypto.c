@@ -29,9 +29,10 @@ Image* decrypt(Image *img) {
 
 void encrypt(Image *img1, Image *img2) {
 
-    printf("%d", (int) getNbRows(img1));
-    printf("\nET : ");
-    printf("%d", (int) getNbRows(img2));
+    printf("%d", (int) getNbRows(img1) + (int) getNbRows(img2));
+    printf("\n");
+    printf("2,3 : %d", getImagePixel(img1, 2, 3).r);
+    printf("\n");
 
     // p1 = p1 - p1 % 8 + p2 / 32
 
