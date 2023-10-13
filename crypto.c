@@ -11,17 +11,28 @@
 Image* mapImage(int nbImg, Image **images, Pixel (*f)(int nb, Pixel*),
         int newImage) {
 
-    // A compléter
+    // temp Image* p = getImagePixel(images[0], getNbRows(images[0]), getNbRows(images[0]));
+    Pixel* p = malloc(sizeof(Pixel));
+    if (f(nbImg, p).r == 1)
+        return images[newImage];
+
+    return NULL;
 
 }
 
 Image* decrypt(Image *img) {
 
-    // A compléter
+    return img;
+    // p2 = (p1 % 8) * 32
 
 }
 
 void encrypt(Image *img1, Image *img2) {
 
-    // A compléter
+    printf("%d", (int) getNbRows(img1));
+    printf("\nET : ");
+    printf("%d", (int) getNbRows(img2));
+
+    // p1 = p1 - p1 % 8 + p2 / 32
+
 }
