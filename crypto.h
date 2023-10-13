@@ -16,7 +16,8 @@
  * @param newImage if 1, create a new image, otherwise modify the first image
  * @return Image* the new image
  */
-Image *mapImage(int nbImg, Image **images, Pixel (*f)(int nb, Pixel *), int newImage);
+Image* mapImage(int nbImg, Image **images, Pixel (*f)(int nb, Pixel*),
+        int newImage);
 
 /**
  * @brief Decrypt an image
@@ -24,7 +25,7 @@ Image *mapImage(int nbImg, Image **images, Pixel (*f)(int nb, Pixel *), int newI
  * @param img the image to decrypt
  * @return Image* the decrypted hidden image
  */
-Image *decrypt(Image *img);
+Image* decrypt(Image *img);
 
 /**
  * @brief Encrypt an image

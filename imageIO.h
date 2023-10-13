@@ -7,11 +7,10 @@
 typedef struct Image_t Image;
 
 // Structure representing a pixel
-typedef struct
-{
-	unsigned char r;
-	unsigned char g;
-	unsigned char b;
+typedef struct {
+    unsigned char r;
+    unsigned char g;
+    unsigned char b;
 } Pixel;
 
 /**
@@ -21,7 +20,7 @@ typedef struct
  * @param nb_col the number of columns of the image
  * @return Image* the created image
  */
-Image *createImage(size_t nb_rows, size_t nb_col);
+Image* createImage(size_t nb_rows, size_t nb_col);
 
 /**
  * @brief Free the memory allocated for the image
@@ -56,7 +55,7 @@ void setImagePixel(Image *img, size_t i, size_t j, Pixel p);
  * @param filename the name of the file
  * @return Image* the image read from the file
  */
-Image *readImage(const char *filename);
+Image* readImage(const char *filename);
 
 /**
  * @brief Write an image to a file
