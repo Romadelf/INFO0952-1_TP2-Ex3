@@ -11,12 +11,26 @@
 Image* mapImage(int nbImg, Image **images, Pixel (*f)(int nb, Pixel*),
         int newImage) {
 
-    // temp Image* p = getImagePixel(images[0], getNbRows(images[0]), getNbRows(images[0]));
-    Pixel *p = malloc(sizeof(Pixel));
-    if (f(nbImg, p).r == 1)
-        return images[newImage];
+    if (nbImg <= 0)
+        return NULL;
 
-    return NULL;
+    size_t rows = getNbRows(images[0]);
+    size_t cols = getNbColumns(images[0]);
+    Image *img = newImage ? createImage(rows, cols) : images[0];
+    int n = sizeof(images);
+
+    for (size_t i = 0; i < cols; i++)
+        for (size_t j = 0; j < rows; j++) {
+
+            Pixel *p = malloc(n * sizeof(Image));
+            for (int k = 0; k < n; k++)
+                p[k] = getImagePixel(images[k], j, i);
+
+            Pixel result = f(n, p);
+            setImagePixel(img, j, i, p);
+        }
+
+    return img;
 
 }
 
