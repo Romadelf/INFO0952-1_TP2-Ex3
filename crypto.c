@@ -16,7 +16,7 @@ Image* mapImage(int nbImg, Image **images, Pixel (*f)(int nb, Pixel*),
 
     size_t rows = getNbRows(images[0]);
     size_t cols = getNbColumns(images[0]);
-    Image *img = newImage ? createImage(rows, cols) : images[0];
+    Image *img = newImage == 1 ? createImage(rows, cols) : images[0];
     int n = sizeof(images);
 
     for (size_t i = 0; i < cols; i++)
