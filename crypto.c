@@ -19,15 +19,15 @@ Image* mapImage(int nbImg, Image **images, Pixel (*f)(int nb, Pixel*),
     Image *img = newImage == 1 ? createImage(rows, cols) : images[0];
     int n = sizeof(images);
 
-    for (size_t i = 0; i < cols; i++)
-        for (size_t j = 0; j < rows; j++) {
+    for (size_t i = 0; i < rows; i++)
+        for (size_t j = 0; j < cols; j++) {
 
             Pixel *p = malloc(n * sizeof(Pixel));
             for (int k = 0; k < n; k++)
-                p[k] = getImagePixel(images[k], j, i);
+                p[k] = getImagePixel(images[k], i, j);
 
             Pixel result = f(n, p);
-            setImagePixel(img, j, i, result);
+            setImagePixel(img, i, j, result);
         }
 
     return img;
@@ -40,15 +40,15 @@ Image* decrypt(Image *img) {
     size_t cols = getNbColumns(img);
     Image *img2 = createImage(rows, cols);
 
-    for (size_t i = 0; i < cols; i++)
-        for (size_t j = 0; j < rows; j++) {
-            Pixel p = getImagePixel(img, j, i);
+    for (size_t i = 0; i < rows; i++)
+        for (size_t j = 0; j < cols; j++) {
+            Pixel p = getImagePixel(img, i, j);
 
             p.r = p.r % 8 * 32;
             p.g = p.g % 8 * 32;
             p.b = p.b % 8 * 32;
 
-            setImagePixel(img2, j, i, p);
+            setImagePixel(img2, i, j, p);
         }
 
     return img2;
@@ -60,16 +60,16 @@ void encrypt(Image *img1, Image *img2) {
     size_t rows = getNbRows(img1);
     size_t cols = getNbColumns(img1);
 
-    for (size_t i = 0; i < cols; i++)
-        for (size_t j = 0; j < rows; j++) {
-            Pixel p1 = getImagePixel(img1, j, i);
-            Pixel p2 = getImagePixel(img2, j, i);
+    for (size_t i = 0; i < rows; i++)
+        for (size_t j = 0; j < cols; j++) {
+            Pixel p1 = getImagePixel(img1, i, j);
+            Pixel p2 = getImagePixel(img2, i, j);
 
             p1.r += -p1.r % 8 + p2.r / 32;
             p1.g += -p1.g % 8 + p2.g / 32;
             p1.b += -p1.b % 8 + p2.b / 32;
 
-            setImagePixel(img1, j, i, p1);
+            setImagePixel(img1, i, j, p1);
         }
 
 }
