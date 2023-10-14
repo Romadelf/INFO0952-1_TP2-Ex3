@@ -55,7 +55,6 @@ Image* decrypt(Image *img) {
 
 }
 
-/** TODO : Les images sont supposées de même taille */
 void encrypt(Image *img1, Image *img2) {
 
     size_t rows = getNbRows(img1);
